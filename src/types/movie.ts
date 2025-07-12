@@ -7,3 +7,8 @@ export interface Movie {
   release_date: string;
   vote_average: number;
 }
+
+export interface MoviesResponse {
+  movies: Movie[];
+  total_pages: number;
+}
