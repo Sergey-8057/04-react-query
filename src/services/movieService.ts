@@ -6,6 +6,11 @@ interface MoviesHttpResponse {
   total_pages: number;
 }
 
+export interface MoviesResponse {
+  movies: Movie[];
+  total_pages: number;
+}
+
 const BASE_URL: string = 'https://api.themoviedb.org/3/search/movie';
 const TMDB_TOKEN: string = import.meta.env.VITE_TMDB_TOKEN;
 

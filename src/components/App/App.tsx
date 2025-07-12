@@ -10,7 +10,8 @@ import MovieModal from '../MovieModal/MovieModal';
 import Pagination from '../Pagination/Pagination';
 import SearchBar from '../SearchBar/SearchBar';
 
-import type { Movie, MoviesResponse } from '../../types/movie';
+import type { Movie } from '../../types/movie';
+import type { MoviesResponse } from '../../services/movieService';
 import css from './App.module.css';
 
 export default function App() {
@@ -28,7 +29,7 @@ export default function App() {
   const totalPages = data?.total_pages ?? 0;
 
   useEffect(() => {
-    if (isSuccess && data && data.movies.length === 0) {
+    if (isSuccess && data.movies.length === 0) {
       toast.error('No movies found for your request.');
     }
   }, [isSuccess, data]);
@@ -53,7 +54,7 @@ export default function App() {
       {isSuccess && totalPages > 1 && (<Pagination page={page} totalPages={totalPages} changePage={setPage} />)}
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      {data && data.movies.length > 0 && <MovieGrid movies={data.movies} onSelect={openModal} />}
+      {isSuccess && data.movies.length > 0 && <MovieGrid movies={data.movies} onSelect={openModal} />}
       {selectedMovie && <MovieModal movie={selectedMovie} onClose={closeModal} />}
     </div>
   );
