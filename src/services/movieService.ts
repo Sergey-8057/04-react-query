@@ -23,7 +23,6 @@ export default async function fetchMovies(
     },
   });
   const { results, total_pages } = response.data;
-  // console.log(results);
 
   return {
     movies: results.map(movie => ({

@@ -33,9 +33,6 @@ export default function App() {
     }
   }, [isSuccess, data]);
 
-  console.log(query);
-  console.log(data);
-
   const handleSearch = async (search: string) => {
     setQuery(search);
     setPage(1);
